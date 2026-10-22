@@ -1,0 +1,6 @@
+services:
+  nk-auto-builder:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

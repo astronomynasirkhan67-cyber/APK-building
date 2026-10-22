@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Mobile-first source project inspection and build dashboard.">
+  <link rel="manifest" href="/assets/manifest.webmanifest">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <title>NK Auto Builder AI</title>
+</head>
+<body data-theme="black">
+  <header class="topbar">
+    <div class="brandmark">NK</div>
+    <div class="brandtext"><strong>NK Auto Builder AI</strong><small>Source ZIP → build workflow</small></div>
+    <select id="themeSelect" aria-label="Choose theme">
+      <option value="black">Black</option><option value="white">White</option>
+      <option value="red">Red</option><option value="green">Green</option>
+    </select>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="eyebrow">MOBILE BUILD STUDIO</span>
+      <h1>Turn your project into a build workflow.</h1>
+      <p>Upload a source ZIP, inspect its structure, then choose APK or Windows EXE.</p>
+      <div class="status"><span class="dot"></span> Local dashboard ready</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title"><span class="step">01</span><div><h2>Choose source code</h2><p>ZIP archive · Maximum 100 MB</p></div></div>
+      <label class="dropzone" for="zipFile">
+        <div class="upload-icon">↑</div>
+        <strong>Tap to select a ZIP file</strong>
+        <span id="fileName">No file selected</span>
+        <input id="zipFile" type="file" accept=".zip,application/zip">
+      </label>
+      <button class="primary" id="inspectBtn">Inspect project</button>
+      <div id="result" class="result hidden" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title"><span class="step">02</span><div><h2>Choose output</h2><p>Build availability depends on project type and build workers.</p></div></div>
+      <div class="targets">
+        <button class="target selected" data-target="apk"><span class="target-icon">▣</span><strong>Android APK</strong><small>Install on Android</small></button>
+        <button class="target" data-target="exe"><span class="target-icon">▰</span><strong>Windows EXE</strong><small>Run on Windows</small></button>
+      </div>
+      <button class="primary" id="buildBtn" disabled>Request build</button>
+      <p class="fineprint">Build worker not configured in this starter. It will never pretend a file was built when it was not.</p>
+      <div id="buildResult" class="result hidden" aria-live="polite"></div>
+    </section>
+
+    <section class="notice">
+      <strong>Safety first</strong>
+      <p>Source archives can contain unsafe scripts. This version inspects ZIP contents only; it does not execute uploaded code.</p>
+    </section>
+    <footer>NK Auto Builder AI · Starter v0.1</footer>
+  </main>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
